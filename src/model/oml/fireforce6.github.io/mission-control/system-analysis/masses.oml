@@ -465,4 +465,21 @@ description <https://fireforce6.github.io/mission-control/system-analysis/masses
     ref instance components:GPSProcessor : component:PhysicalPart [
         component:mass 0.2^^si:kg
     ]
+
+    
+    ref instance components:XBandModulator : component:PhysicalPart [
+        component:mass 1.2^^si:kg
+    ]
+
+    ref instance components:XBandPowerAmplifier : component:PhysicalPart [
+        component:mass 2.4^^si:kg
+    ]
+
+    ref instance components:XBandFrequencyConverter : component:PhysicalPart [
+        component:mass 0.8^^si:kg
+    ]
+
+    ref instance components:XBandFeedHorn : component:PhysicalPart [
+        component:mass 900^^si:g
+    ]
 }

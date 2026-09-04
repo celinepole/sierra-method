@@ -70,4 +70,41 @@ description <https://fireforce6.github.io/mission-control/system-analysis/connec
         component:transfers TelemetrySignal
     ]
 
+    ref instance components:XBandDownlinkUnit [
+        component:hasPort XBandDownlink.Data_In
+        component:hasPort XBandDownlink.Power_In
+        component:hasPort XBandDownlink.RF_Out
+        
+    ]
+
+    instance XBandDownlink.Data_In : component:Port [ component:direction "In" ]
+    instance XBandDownlink.Power_In : component:Port [ component:direction "In" ]
+    instance XBandDownlink.RF_Out : component:Port [ component:direction "Out" ]
+    
+
+    ref instance components:XBandAntenna [
+        component:hasPort XBandAntenna.RF_In
+    ]
+    instance XBandAntenna.RF_In : component:Port [ component:direction "In" ]
+
+    instance XBandRFSignal : component:Signal []
+
+    relation instance Conn_PayloadData_to_XBandDownlink : component:Connection [
+        from Payload.Data_Out
+        to XBandDownlink.Data_In
+        component:transfers TelemetrySignal
+    ]
+
+    relation instance Conn_PlatformPower_to_XBandDownlink : component:Connection [
+        from Platform.Power_Out
+        to XBandDownlink.Power_In
+        component:transfers ElectricalPower
+    ]
+
+    relation instance Conn_XBandDownlink_to_XBandAntenna : component:Connection [
+        from XBandDownlink.RF_Out
+        to XBandAntenna.RF_In
+        component:transfers XBandRFSignal
+    ]
+
 }

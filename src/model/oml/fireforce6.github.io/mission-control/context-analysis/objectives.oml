@@ -35,4 +35,10 @@ description <https://fireforce6.github.io/mission-control/context-analysis/objec
         mission:isDerivedFrom concerns:SafetyOfficerNeeds
         mission:isDerivedFrom concerns:CommandCenterNeeds
     ]
+
+        instance O5 : mission:Objective [
+        base:description "Deliver Payload Imagery Promptly to the Ground Segment."
+        mission:isPursuedBy missions:MissionControl
+        mission:isDerivedFrom concerns:OperatorNeeds
+    ]
 }

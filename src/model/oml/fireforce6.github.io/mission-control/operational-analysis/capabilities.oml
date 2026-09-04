@@ -45,4 +45,9 @@ description <https://fireforce6.github.io/mission-control/operational-analysis/c
         base:description "Integrate Fire Cloud telemetry for environment and drone data."
         mission:isRequiredBy objectives:O2
     ]
+
+        instance C9 : mission:Capability [
+        base:description "Downlink payload imagery at high rate during ground station passes."
+        mission:isRequiredBy objectives:O5
+    ]
 }
