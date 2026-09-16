@@ -1,22 +1,33 @@
 description <https://fireforce6.github.io/mission-control/system-analysis/connections#> as connections {
-
-	extends <https://fireforce6.github.io/mission-control/system-analysis/components#> as components
-
-	uses <https://www.modelware.io/sierra/component#> as component
+    extends <https://fireforce6.github.io/mission-control/system-analysis/components#> as components
+    uses <https://www.modelware.io/sierra/component#> as component
+    uses <https://www.modelware.io/sierra/base#> as base
 
     ref instance components:FireSat [
         component:hasPort FireSat.Command_In
         component:hasPort FireSat.Telemetry_Out
     ]
-    instance FireSat.Command_In : component:Port [ component:direction "In" ]
-    instance FireSat.Telemetry_Out : component:Port [ component:direction "Out" ]
+
+    instance FireSat.Command_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance FireSat.Telemetry_Out : component:Port [
+        component:direction "Out"
+    ]
 
     ref instance components:Payload [
         component:hasPort Payload.Data_Out
         component:hasPort Payload.Power_In
     ]
-    instance Payload.Data_Out : component:Port [ component:direction "Out" ]
-    instance Payload.Power_In : component:Port [ component:direction "In" ]
+
+    instance Payload.Data_Out : component:Port [
+        component:direction "Out"
+    ]
+
+    instance Payload.Power_In : component:Port [
+        component:direction "In"
+    ]
 
     ref instance components:Platform [
         component:hasPort Platform.Data_In
@@ -24,21 +35,41 @@ description <https://fireforce6.github.io/mission-control/system-analysis/connec
         component:hasPort Platform.Power_Out
         component:hasPort Platform.Command_In
     ]
-    instance Platform.Data_In : component:Port [ component:direction "In" ]
-    instance Platform.Data_Out : component:Port [ component:direction "Out" ]
-    instance Platform.Power_Out : component:Port [ component:direction "Out" ]
-    instance Platform.Command_In : component:Port [ component:direction "In" ]
+
+    instance Platform.Data_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance Platform.Data_Out : component:Port [
+        component:direction "Out"
+    ]
+
+    instance Platform.Power_Out : component:Port [
+        component:direction "Out"
+    ]
+
+    instance Platform.Command_In : component:Port [
+        component:direction "In"
+    ]
 
     ref instance components:PropulsionSegment [
         component:hasPort Propulsion.Command_In
         component:hasPort Propulsion.Power_In
     ]
-    instance Propulsion.Command_In : component:Port [ component:direction "In" ]
-    instance Propulsion.Power_In : component:Port [ component:direction "In" ]
 
-    instance TelemetrySignal : component:Signal []
-    instance CommandSignal : component:Signal []
-    instance ElectricalPower : component:Energy []
+    instance Propulsion.Command_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance Propulsion.Power_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance TelemetrySignal : component:Signal
+
+    instance CommandSignal : component:Signal
+
+    instance ElectricalPower : component:Energy
 
     relation instance Conn_FireSatCmd_to_Platform : component:Connection [
         from FireSat.Command_In
@@ -74,20 +105,29 @@ description <https://fireforce6.github.io/mission-control/system-analysis/connec
         component:hasPort XBandDownlink.Data_In
         component:hasPort XBandDownlink.Power_In
         component:hasPort XBandDownlink.RF_Out
-        
     ]
 
-    instance XBandDownlink.Data_In : component:Port [ component:direction "In" ]
-    instance XBandDownlink.Power_In : component:Port [ component:direction "In" ]
-    instance XBandDownlink.RF_Out : component:Port [ component:direction "Out" ]
-    
+    instance XBandDownlink.Data_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance XBandDownlink.Power_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance XBandDownlink.RF_Out : component:Port [
+        component:direction "Out"
+    ]
 
     ref instance components:XBandAntenna [
         component:hasPort XBandAntenna.RF_In
     ]
-    instance XBandAntenna.RF_In : component:Port [ component:direction "In" ]
 
-    instance XBandRFSignal : component:Signal []
+    instance XBandAntenna.RF_In : component:Port [
+        component:direction "In"
+    ]
+
+    instance XBandRFSignal : component:Signal
 
     relation instance Conn_PayloadData_to_XBandDownlink : component:Connection [
         from Payload.Data_Out
@@ -107,4 +147,24 @@ description <https://fireforce6.github.io/mission-control/system-analysis/connec
         component:transfers XBandRFSignal
     ]
 
+    ref instance components:ServiceSegment [
+        component:hasPort ServiceSegment.Power_In
+        component:hasPort ServiceSegment.Command_In
+        component:hasPort ServiceSegment.Data_Out
+    ]
+
+    instance ServiceSegment.Power_In : component:Port [
+        component:direction "In"
+        base:description "Regulated bus power input"
+    ]
+
+    instance ServiceSegment.Command_In : component:Port [
+        component:direction "In"
+        base:description "Commands from the platform"
+    ]
+
+    instance ServiceSegment.Data_Out : component:Port [
+        component:direction "Out"
+        base:description "Housekeeping telemetry to the platform"
+    ]
 }

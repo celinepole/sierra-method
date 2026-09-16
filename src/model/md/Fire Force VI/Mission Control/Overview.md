@@ -80,8 +80,12 @@
   <tr>
     <td>2. <a href="./System%20Analysis/Masses.md">Manage Component Masses</a></td>
   </tr>
-  <tr>
-    <td>3. <a href="./System%20Analysis/Connections.md">Specify Component Connections</a></td>
+  <tr>  
+  <td>3. <a href="./System%20Analysis/Ports.md">Define Component Ports</a></td>
+   </tr>
+   <tr>
+   <td>4. <a href="./System%20Analysis/Connections.md">Specify Component Connections</a>
+   </td>
   </tr>
 </table>
 
