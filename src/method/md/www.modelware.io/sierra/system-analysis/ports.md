@@ -20,7 +20,7 @@ Define the interface of each component: the ports through which it exchanges sig
 **How to use this page.**
 
 1. In the **Ports** table, add the port. Name it `<Component>.<Name>_In` or `<Component>.<Name>_Out`, set its **Direction**, and describe it.
-2. In the **Component Interfaces** tree, open the owning component and add the new port to its **Ports** list. The hierarchy and descriptions are read-only context owned by the *Components* page; only the port list is edited here.
+2. Attach the port to its owner by adding it to the component's `ref instance ... [ component:hasPort ... ]` block in the connections description. The **Component Interfaces** tree below is read-only context: use it to check where each port sits in the hierarchy.
 3. Run **Validate** before committing. A port that has not yet been attached to a component is reported until step 2 is done.
 
 **Rules this page enforces.**
