@@ -19,7 +19,7 @@ description <https://fireforce6.github.io/mission-control/operational-analysis/r
         base:expression "The system shall show real-time critical alerts and notifications."
         stakeholder:isStatedBy stakeholders:SafetyOfficer
         base:category "L1"
-        base:priority "Low"
+        base:priority "High"
     ]
 
     instance R3 : stakeholder:Requirement [
@@ -76,5 +76,13 @@ description <https://fireforce6.github.io/mission-control/operational-analysis/r
         stakeholder:isStatedBy stakeholders:Operator
         base:category "L2"
         base:priority "High"
+    ]
+
+    instance R10 : stakeholder:Requirement [
+        base:description "Offline Map Cache"
+        base:expression "The system shall display the last known map when connectivity is lost."
+        stakeholder:isStatedBy stakeholders:SafetyOfficer
+        base:category "L1"
+        base:priority "Medium"
     ]
 }

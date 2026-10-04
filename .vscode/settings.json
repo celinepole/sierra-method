@@ -4,5 +4,6 @@
   },
   "files.exclude": {
     "**/.ipynb_checkpoints/": true,
-  }
+  },
+  "chat.mcp.autostart": "never"
 }
